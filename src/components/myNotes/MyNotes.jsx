@@ -1,19 +1,15 @@
-import MyNotesStatus from "./MyNotesStatus/MyNotesStatus";
-
-export default function MyNotes(props) {
-  const titleRu = props.translate.ru.myNotesTitle;
-  const titleEn = props.translate.en.myNotesTitle;
+import { useContext } from "react";
+import MyNotesStatus from "./myNotesStatus/MyNotesStatus";
+import { TranslateContext } from "../../App";
+export default function MyNotes() {
+  const t = useContext(TranslateContext);
   return (
     <div className="my__notes">
       <div className="container">
         <div className="my__notes-title">
-          <h2>{props.language === props.translate.ru ? titleRu : titleEn}</h2>
+          <h2>{t.myNotesTitle}</h2>
         </div>
-        <MyNotesStatus
-          translate={props.translate}
-          setLanguage={props.setLanguage}
-          language={props.language}
-        />
+        <MyNotesStatus />
       </div>
     </div>
   );

@@ -1,18 +1,17 @@
 import { useContext } from "react";
-import footerLogo from "../../Images/footerLogo.png";
-import instImg from "../../Images/instagram.png";
-import fbImg from "../../Images/facebook.png";
-import youtubeImg from "../../Images/youtube.png";
-import appStore from "../../Images/appstore.png";
-import googlePlayImg from "../../Images/google-play.png";
-import emailImg from "../../Images/email.png";
-import placeImg from "../../Images/place.png";
-import clockFooterImg from "../../Images/clockfooter.png";
-import phoneImg from "../../Images/phone-call.png";
-import { TranslateContext } from "../../pages/Home/Home";
+import footerLogo from "../../images/footerLogo.png";
+import instImg from "../../images/instagram.png";
+import fbImg from "../../images/facebook.png";
+import youtubeImg from "../../images/youtube.png";
+import appStore from "../../images/appstore.png";
+import googlePlayImg from "../../images/google-play.png";
+import emailImg from "../../images/email.png";
+import placeImg from "../../images/place.png";
+import clockFooterImg from "../../images/clockfooter.png";
+import phoneImg from "../../images/phone-call.png";
+import { TranslateContext } from "../../App";
 export default function Footer() {
   const t = useContext(TranslateContext);
-  console.log(t);
   return (
     <footer>
       <div className="container">

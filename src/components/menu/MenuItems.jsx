@@ -1,25 +1,18 @@
-import React, { useCallback } from "react";
-
-export default function MenuItems(props) {
-  const renderItems = useCallback(() => {
-    if (props.language === props.translate.ru) {
-      return props.menuItemRu.map((item, index) => (
-        <li key={index}>
-          <a href="#">{item.menuItem}</a>
-        </li>
-      ));
-    } else {
-      return props.menuItemEn.map((item, index) => (
-        <li key={index}>
-          <a href="#">{item.menuItem}</a>
-        </li>
-      ));
-    }
-  }, [props.language, props.translate.ru, props.menuItemRu, props.menuItemEn]);
+import React, { useContext, useMemo } from "react";
+import { TranslateContext } from "../../App";
+export default function MenuItems() {
+  const t = useContext(TranslateContext);
+  const renderItems = useMemo(() => {
+    return t.menuItem.map((item, index) => (
+      <li key={index}>
+        <a href="#">{item.menuItem}</a>
+      </li>
+    ));
+  }, [t]);
 
   return (
     <div className="menu__item">
-      <ul>{renderItems()}</ul>
+      <ul>{renderItems}</ul>
     </div>
   );
 }
