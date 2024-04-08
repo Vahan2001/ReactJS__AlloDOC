@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { TranslateContext } from "../../pages/Home/Home";
-import headerImg from "../../Images/header.jpg";
+import { TranslateContext } from "../../App";
+import headerImg from "../../images/header.jpg";
 
 export default function Header() {
   const t = useContext(TranslateContext);

@@ -1,10 +1,13 @@
-import { useContext, useEffect, useState } from "react";
-import { TranslateContext } from "../../pages/Home/Home";
-import logoImg from "../../Images/Logo.png";
-import notificationsImg from "../../Images/zang.png";
-import arrowImg from "../../Images/Vector.png";
-import MenuItems from "./MenuItems";
+import { useContext, useState } from "react";
+import { TranslateContext } from "../../App";
+import logoImg from "../../images/Logo.png";
+import notificationsImg from "../../images/zang.png";
+import arrowImg from "../../images/Vector.png";
+import MenuItems from "../../components/menu/MenuItems";
 import MenuProfilItems from "./MenuProfilItem";
+import translateRu from "../../local/translateRu";
+import translateEn from "../../local/translateEn";
+import { Link } from "react-router-dom";
 
 export default function Menu(props) {
   const t = useContext(TranslateContext);
@@ -15,32 +18,25 @@ export default function Menu(props) {
         <div className="container">
           <div className="translate__page">
             <p
-              onClick={() => props.setLanguage(props.translate.ru)}
-              className={
-                props.language === props.translate.ru ? "langActive" : ""
-              }
+              onClick={() => props.setLanguage(translateRu.ru)}
+              className={t === translateRu.ru ? "langActive" : ""}
             >
               ru
             </p>
             <p
-              onClick={() => props.setLanguage(props.translate.en)}
-              className={
-                props.language === props.translate.en ? "langActive" : ""
-              }
+              onClick={() => props.setLanguage(translateEn.en)}
+              className={t === translateEn.en ? "langActive" : ""}
             >
               en
             </p>
           </div>
           <div className="menu__block">
             <div className="menu__logo">
-              <img src={logoImg} alt="AlloDoc_Logo" />
+              <Link to={"/"}>
+                <img src={logoImg} alt="AlloDoc_Logo" />
+              </Link>
             </div>
-            <MenuItems
-              language={props.language}
-              menuItemRu={props.translate.ru.menuItemRu}
-              menuItemEn={props.translate.en.menuItemEn}
-              translate={props.translate}
-            />
+            <MenuItems />
             <div className="menu__user-icon">
               <img src={notificationsImg} alt="notifications" />
             </div>
@@ -57,14 +53,7 @@ export default function Menu(props) {
                 </button>
               </div>
             </div>
-            {profilBlok ? (
-              <MenuProfilItems
-                language={props.language}
-                menuProfilItemsRu={props.translate.ru.menuProfilItemRu}
-                menuProfilItemsEn={props.translate.en.menuProfilItemEn}
-                translate={props.translate}
-              />
-            ) : null}
+            {profilBlok && <MenuProfilItems />}
           </div>
         </div>
       </div>
