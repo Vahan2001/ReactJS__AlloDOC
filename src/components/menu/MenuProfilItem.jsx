@@ -7,7 +7,7 @@ export default function MenuProfilItems() {
     return t.menuProfilItems.map((item, index) => (
       <li key={index}>
         <div className="profil__item">
-          <img src={item.img} alt="" />
+          <img src={item.img} alt="menuProfilImage" />
           {item.menuProfilitem === t.menuProfilItems[0].menuProfilitem ? (
             <Link to={"/mynotes"}>{item.menuProfilitem}</Link>
           ) : item.menuProfilitem === t.menuProfilItems[1].menuProfilitem ? (

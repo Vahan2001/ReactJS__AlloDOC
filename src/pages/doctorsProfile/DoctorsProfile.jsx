@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { TranslateContext } from "../../App";
 import priceImg from "../../images/price.png";
@@ -8,6 +8,11 @@ import specializesImg from "../../images/specializes.png";
 import additionallyImg from "../../images/additionally.png";
 export default function DoctorsProfile() {
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const t = useContext(TranslateContext);
 
   const filterDoctorsId = useMemo(() => {
