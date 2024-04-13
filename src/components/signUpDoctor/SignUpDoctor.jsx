@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { TranslateContext } from "../../App";
 import signUpDocImg from "../../images/signUpDoc.png";
+import { useTranslation } from "react-i18next";
 export default function SignUpDoctor() {
-  const t = useContext(TranslateContext);
+  const { t } = useTranslation();
   return (
     <section className="signup">
       <div className="container">
@@ -12,18 +11,18 @@ export default function SignUpDoctor() {
           </div>
           <div className="signup__text">
             <div className="signup__title">
-              <h2>{t.signUpTitle}</h2>
+              <h2>{t("signUpTitle")}</h2>
             </div>
             <div className="signup__desc">
-              <p>{t.signUpDesc}</p>
+              <p>{t("signUpDesc")}</p>
               <ul>
-                <li>{t.signUpList1}</li>
-                <li>{t.signUpList2}</li>
-                <li>{t.signUpList3}</li>
+                <li>{t("signUpList1")}</li>
+                <li>{t("signUpList2")}</li>
+                <li>{t("signUpList3")}</li>
               </ul>
             </div>
             <div className="signup__btn">
-              <a href="#">{t.signUpBtn}</a>
+              <a href="#">{t("signUpBtn")}</a>
             </div>
           </div>
         </div>

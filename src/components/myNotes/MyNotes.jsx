@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import MyNotesStatus from "./myNotesStatus/MyNotesStatus";
-import { TranslateContext } from "../../App";
+import { useTranslation } from "react-i18next";
 export default function MyNotes() {
-  const t = useContext(TranslateContext);
+  const { t } = useTranslation();
   return (
     <div className="my__notes">
       <div className="container">
         <div className="my__notes-title">
-          <h2>{t.myNotesTitle}</h2>
+          <h2>{t("myNotesTitle")}</h2>
         </div>
         <MyNotesStatus />
       </div>

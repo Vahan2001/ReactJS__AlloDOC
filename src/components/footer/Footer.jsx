@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import footerLogo from "../../images/footerLogo.png";
 import instImg from "../../images/instagram.png";
 import fbImg from "../../images/facebook.png";
@@ -9,9 +9,9 @@ import emailImg from "../../images/email.png";
 import placeImg from "../../images/place.png";
 import clockFooterImg from "../../images/clockfooter.png";
 import phoneImg from "../../images/phone-call.png";
-import { TranslateContext } from "../../App";
+
 export default function Footer() {
-  const t = useContext(TranslateContext);
+  const { t } = useTranslation();
   return (
     <footer>
       <div className="container">
@@ -22,10 +22,10 @@ export default function Footer() {
             </div>
             <div className="footer__desc">
               <p>
-                {t.footerDesc1}
+                {t("footerDesc1")}
                 <br />
                 <br />
-                {t.footerDesc2}
+                {t("footerDesc2")}
               </p>
             </div>
             <div className="footer__items">
@@ -51,41 +51,41 @@ export default function Footer() {
           <div className="footer__list">
             <ul>
               <li>
-                <a href="#">{t.footerList1}</a>
+                <a href="#">{t("footerList1")}</a>
               </li>
               <li>
-                <a href="#">{t.footerList2}</a>
+                <a href="#">{t("footerList2")}</a>
               </li>
               <li>
-                <a href="#">{t.footerList3}</a>
+                <a href="#">{t("footerList3")}</a>
               </li>
               <li>
-                <a href="#">{t.footerList4}</a>
+                <a href="#">{t("footerList4")}</a>
               </li>
               <li>
-                <a href="#">{t.footerList5}</a>
+                <a href="#">{t("footerList5")}</a>
               </li>
               <li>
-                <a href="#">{t.footerList6}</a>
+                <a href="#">{t("footerList6")}</a>
               </li>
             </ul>
           </div>
           <div className="footer__feedback">
             <div className="feedback__block">
               <img src={emailImg} alt="" />
-              <a href="#">{t.footerfeedback1}</a>
+              <a href="#">{t("footerfeedback1")}</a>
             </div>
             <div className="feedback__block">
               <img src={placeImg} alt="" />
-              <a href="#">{t.footerfeedback2}</a>
+              <a href="#">{t("footerfeedback2")}</a>
             </div>
             <div className="feedback__block">
               <img src={clockFooterImg} alt="" />
-              <a href="#">{t.footerfeedback3}</a>
+              <a href="#">{t("footerfeedback3")}</a>
             </div>
             <div className="feedback__block">
               <img src={phoneImg} alt="" />
-              <a href="#">{t.footerfeedback4}</a>
+              <a href="#">{t("footerfeedback4")}</a>
             </div>
           </div>
         </div>

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-
 export default function Doctor(props) {
   return (
     <div className="doctors__item">
       <div className="doctor__desc">
         <div className="doctor__img">
-          <img src={props.item.doctorsImg} alt="Doctor Image" />
+          <img
+            src={require(`../../../../images/${props.item.doctorsImg}`)}
+            alt="Doctor Image"
+          />
         </div>
         <div className="doctor__name">
           <h3>{props.item.name}</h3>

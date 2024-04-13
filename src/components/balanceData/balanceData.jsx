@@ -1,25 +1,25 @@
-import { useContext, useMemo } from "react";
-import { TranslateContext } from "../../App";
-
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 export default function BalanceData(props) {
-  const t = useContext(TranslateContext);
-  const filterBalanceData = useMemo(() => {
-    return t.balanceData.filter((doctorsItem) =>
-      doctorsItem.status === props.filterBalance
+  const { t } = useTranslation();
+
+  const filterBalanceData = t("balanceData", { returnObjects: true }).filter(
+    (doctorsItem) => {
+      return doctorsItem.status === props.filterBalance
         ? doctorsItem
         : props.filterBalance === "За все время" ||
           props.filterBalance === "In all that time"
-        ? t.balanceData
-        : null
-    );
-  }, [t.balanceData, props.filterBalance]);
+        ? t("balanceData")
+        : null;
+    }
+  );
 
   const renderBalanceData = useMemo(() => {
     return filterBalanceData.map((item, index) => {
       return (
         <div className="balance__data" key={index}>
           <div className="balance__data-img">
-            <img src={item.img} alt="image" />
+            <img src={require(`../../images/${item.img}`)} alt="cart" />
           </div>
           <div className="balance__data-time">
             <p>{item.time}</p>

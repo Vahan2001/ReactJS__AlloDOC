@@ -1,24 +1,21 @@
-import React, { useContext, useMemo } from "react";
-import { TranslateContext } from "../../App";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 export default function MenuProfilItems() {
-  const t = useContext(TranslateContext);
-  const renderItems = useMemo(() => {
-    return t.menuProfilItems.map((item, index) => (
+  const { t } = useTranslation();
+
+  const renderItems = t("menuProfilItems", { returnObjects: true }).map(
+    (item, index) => (
       <li key={index}>
         <div className="profil__item">
-          <img src={item.img} alt="menuProfilImage" />
-          {item.menuProfilitem === t.menuProfilItems[0].menuProfilitem ? (
-            <Link to={"/mynotes"}>{item.menuProfilitem}</Link>
-          ) : item.menuProfilitem === t.menuProfilItems[1].menuProfilitem ? (
-            <Link to={"/balance"}>{item.menuProfilitem}</Link>
-          ) : (
-            <a href="#">{item.menuProfilitem}</a>
-          )}
+          <img
+            src={require(`../../images/${item.img}`)}
+            alt="menuProfilImage"
+          />
+          <Link to={item.link}>{item.menuProfilitem}</Link>
         </div>
       </li>
-    ));
-  }, [t]);
+    )
+  );
 
   return (
     <div className="menu__user-profile">

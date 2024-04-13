@@ -1,33 +1,33 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DoctorsList from "../doctorsList/DoctorsList";
-import { TranslateContext } from "../../../App";
+import { useTranslation } from "react-i18next";
 
 export default function MyNotesStatus() {
-  const t = useContext(TranslateContext);
-  const [filter, setFilter] = useState(t.scheduled);
+  const { t } = useTranslation();
+  const [filter, setFilter] = useState(t("scheduled"));
   useEffect(() => {
-    setFilter(t.scheduled);
+    setFilter(t("scheduled"));
   }, [t]);
   return (
     <div className="my__notes-status">
       <div className="my__status-btns">
         <button
-          onClick={() => setFilter(t.scheduled)}
-          className={filter === t.scheduled ? "active" : ""}
+          onClick={() => setFilter(t("scheduled"))}
+          className={filter === t("scheduled") ? "active" : ""}
         >
-          {t.scheduled}
+          {t("scheduled")}
         </button>
         <button
-          onClick={() => setFilter(t.past)}
-          className={filter === t.past ? "active" : ""}
+          onClick={() => setFilter(t("past"))}
+          className={filter === t("past") ? "active" : ""}
         >
-          {t.past}
+          {t("past")}
         </button>
         <button
-          onClick={() => setFilter(t.canceled)}
-          className={filter === t.canceled ? "active" : ""}
+          onClick={() => setFilter(t("canceled"))}
+          className={filter === t("canceled") ? "active" : ""}
         >
-          {t.canceled}
+          {t("canceled")}
         </button>
       </div>
       <DoctorsList filter={filter} />
