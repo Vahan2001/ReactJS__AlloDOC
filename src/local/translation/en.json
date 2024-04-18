@@ -1,19 +1,13 @@
 {
   "translation": {
-    "menuItem": [
-      {
-        "menuItem": "How to use?",
-        "link": "/json"
-      },
-      {
-        "menuItem": "My notes",
-        "link": "/mynotes"
-      },
-      {
-        "menuItem": "To make an appointment with a doctor",
-        "link": "/appointment"
-      }
-    ],
+    "menuItems": {
+      "menuItem1": "How to use?",
+      "link1": "/json",
+      "menuItem2": "My notes",
+      "link2": "/mynotes",
+      "menuItem3": "To make an appointment with a doctor",
+      "link3": "/appointment"
+    },
     "menuProfilName": "Artem Sviridov",
     "menuProfilItems": [
       {
@@ -56,15 +50,27 @@
     "signUpList3": "We will explain the cause of the ailment clearly and give a detailed recommendation",
     "signUpBtn": "Sign up",
     "myNotesTitle": "My notes",
+
     "scheduled": "Scheduled",
     "past": "Past",
     "canceled": "Canceled",
+
     "nextEntry": "Next entry",
     "education": "Education",
     "specializes": "Specializes in treating",
     "additionally": "Additionally",
     "doctorsText": "Doctors",
     "physicianProfile": "Physician profile",
+    "therapist": "Therapist",
+    "pediatrician": "Pediatrician",
+    "obstetrician-gynecologist": "Obstetrician-gynecologist",
+    "docBtn1": "View entry",
+    "docBtn2": "View the resolution",
+    "experience": " Years of experience",
+    "connection": "Video link",
+    "hour": "16:00",
+    "priceText": " / counseling",
+    "timeText": " minutes",
     "doctors": [
       {
         "id": 1,
@@ -72,16 +78,13 @@
         "doctorsImg": "doctors.png",
         "name": "Olga Nikitina",
         "profession": "Pediatrician",
-        "experience": "15 years of experience",
+
         "day": "March 03, 2021.",
-        "hour": "16:00",
-        "connection": "Video link",
+
         "connectionImg": "videoCamImg",
-        "docBtn1": "View entry",
-        "docBtn2": "View the resolution",
+
         "price1": "900 ",
-        "price2": " / counseling",
-        "time": "30 minutes",
+
         "education1": "1992 - Russian State University",
         "education2": "1994 - Residency in specialty «Pediatrics»"
       },

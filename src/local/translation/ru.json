@@ -1,19 +1,13 @@
 {
   "translation": {
-    "menuItem": [
-      {
-        "menuItem": "Как пользоваться?",
-        "link": "/json"
-      },
-      {
-        "menuItem": "Мои записи",
-        "link": "/mynotes"
-      },
-      {
-        "menuItem": "Записаться к врачу",
-        "link": "/appointment"
-      }
-    ],
+    "menuItems": {
+      "menuItem1": "Как пользоваться?",
+      "link1": "/json",
+      "menuItem2": "Мои записи",
+      "link2": "/mynotes",
+      "menuItem3": "Записаться к врачу",
+      "link3": "/appointment"
+    },
     "menuProfilName": "Артем Свиридов",
     "menuProfilItems": [
       {
@@ -66,6 +60,17 @@
     "additionally": "Дополнительно",
     "doctorsText": "Врачи",
     "physicianProfile": "Профиль врача",
+    "therapist": "Терапевт",
+    "pediatrician": "Педиатр",
+    "obstetrician-gynecologist": "Акушер-гинеколог",
+    "docBtn1": "Посмотреть запись",
+    "docBtn2": "Посмотреть постановление",
+    "experience": " Стаж лет",
+    "connection": "Видео связь",
+    "hour": "16:00",
+    "priceText": " / консультация",
+    "timeText": " минут",
+
     "doctors": [
       {
         "id": 1,
@@ -73,16 +78,9 @@
         "doctorsImg": "doctors.png",
         "name": "Ольга Никитина",
         "profession": "Педиатр",
-        "experience": "Стаж 15 лет",
         "day": "03 Марта 2021",
-        "hour": "16:00",
-        "connection": "Видео связь",
         "connectionImg": "videoCamImg",
-        "docBtn1": "Посмотреть запись",
-        "docBtn2": "Посмотреть постановление",
         "price1": "900 ",
-        "price2": " / консультация",
-        "time": "30 минут",
         "education1": "1992 - Российский Государственный Университет",
         "education2": "1994 - Ординатура по специальности «Педиатрия»"
       },

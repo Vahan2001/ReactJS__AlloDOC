@@ -956,3 +956,7 @@ footer {
   color: rgb(79, 79, 79);
   font-family: Montserrat;
 }
+.loading {
+  text-align: center;
+  font-family: Montserrat;
+}

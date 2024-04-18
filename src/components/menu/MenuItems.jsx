@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 export default function MenuItems() {
   const { t } = useTranslation();
 
-  const renderItems = t("menuItem", { returnObjects: true }).map(
-    (item, index) => (
-      <li key={index}>
-        <Link to={item.link}>{item.menuItem}</Link>
-      </li>
-    )
-  );
-
   return (
     <div className="menu__item">
-      <ul>{renderItems}</ul>
+      <ul>
+        <li>
+          <Link to={t("menuItems.link1")}>{t("menuItems.menuItem1")}</Link>
+        </li>
+        <li>
+          <Link to={t("menuItems.link2")}>{t("menuItems.menuItem2")}</Link>
+        </li>
+        <li>
+          <Link to={t("menuItems.link3")}>{t("menuItems.menuItem3")}</Link>
+        </li>
+      </ul>
     </div>
   );
 }
