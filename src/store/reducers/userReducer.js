@@ -2,6 +2,7 @@ import { UserTypes } from "../types";
 
 const INITIAL_STATE = {
   doctors: [],
+  doctorProfil: [],
 };
 export default function (state = INITIAL_STATE, action) {
   const { type, payload } = action;

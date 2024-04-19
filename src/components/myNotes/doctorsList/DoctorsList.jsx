@@ -10,7 +10,6 @@ export default function DoctorsList(props) {
 
   const renderItems = useMemo(() => {
     return props.doctors.map((item, index) => {
-      console.log(item);
       return (
         <div className="doctors" key={index}>
           <div className="doctors__time">
