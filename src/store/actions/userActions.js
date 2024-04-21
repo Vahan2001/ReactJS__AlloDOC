@@ -1,16 +1,16 @@
 import { UserTypes } from "../types";
 
-function setDoctors(doctors) {
+function requestDoctors(category) {
   return {
     type: UserTypes.DOCTORSREQUEST,
-    payload: doctors,
+    payload: { category },
   };
 }
 
-function setDoctorsProfile(doctorProfil) {
+function requestDoctorsProfile(id) {
   return {
     type: UserTypes.DOCTORSPROFILEREQUEST,
-    payload: doctorProfil,
+    payload: { id },
   };
 }
-export { setDoctors, setDoctorsProfile };
+export { requestDoctors, requestDoctorsProfile };

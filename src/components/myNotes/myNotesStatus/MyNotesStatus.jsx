@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import DoctorsList from "../doctorsList/DoctorsList";
 import { useTranslation } from "react-i18next";
-import doctorsAPI from "../../../services/api/DoctorsAPI";
 import { useDispatch, useSelector } from "react-redux";
-import { UserAction } from "../../../store/actions";
 import { UserSelector } from "../../../store/selectors";
+import { requestDoctors } from "../../../store/actions/userActions";
 
 export default function MyNotesStatus() {
   const { t } = useTranslation();
@@ -12,14 +11,15 @@ export default function MyNotesStatus() {
   const doctors = useSelector(UserSelector.doctorsUserSelector);
   const dispatch = useDispatch();
   useEffect(() => {
-    doctorsAPI
-      .get(`/?page=1&category=${id}`)
-      .then((res) => {
-        dispatch(UserAction.setDoctors(res.data.results));
-      })
-      .catch((error) => {
-        console.error("Error fetching doctors:", error);
-      });
+    // doctorsAPI
+    //   .get(`/?page=1&category=${id}`)
+    //   .then((res) => {
+    //     dispatch(UserAction.requestDoctors(res.data.results));
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching doctors:", error);
+    //   });
+    dispatch(requestDoctors(id));
   }, [id, dispatch]);
 
   return (

@@ -6,41 +6,40 @@ import educationImg from "../../images/education.png";
 import specializesImg from "../../images/specializes.png";
 import additionallyImg from "../../images/additionally.png";
 import { useTranslation } from "react-i18next";
-import doctorsProfilAPI from "../../services/api/DoctorsProfilAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { UserSelector } from "../../store/selectors";
-import { UserAction } from "../../store/actions";
 import i18n from "../../services/i18n";
+import { requestDoctorsProfile } from "../../store/actions/userActions";
 
 function stripHtmlTags(html) {
   return html?.replace(/<[^>]*>?/gm, "");
 }
 export default function DoctorsProfile() {
+  // debugger;
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { t } = useTranslation();
   const { id } = useParams();
-  const doctorsP = useSelector(UserSelector.doctorsProfilSelector);
   const dispatch = useDispatch();
-
+  const doctorsP = useSelector(UserSelector.doctorsProfilSelector);
+  console.log(doctorsP);
+  console.log(id);
   useEffect(() => {
-    setLoading(true);
-    doctorsProfilAPI
-      .get(`/${id}/?role=doctor`)
-      .then((res) => {
-        dispatch(UserAction.setDoctorsProfile(res.data));
-      })
-      .catch((error) => {
-        console.error("Error fetching doctors:", error);
-      })
-      .finally(() => setLoading(false));
-  }, [id, dispatch]);
+    if (doctorsP) {
+      setLoading(true);
+      dispatch(requestDoctorsProfile(id));
+      setLoading(false);
+    } else if (doctorsP.length === 0) {
+      setError(true);
+    }
+  }, [dispatch, error]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!loading && !doctorsP) {
-    return <Navigate to={"/404"} />;
+  if (error) {
+    return <Navigate to="/404" />;
   }
 
   if (loading) {
@@ -62,8 +61,8 @@ export default function DoctorsProfile() {
               <a href="#">{t("doctorsText")} &#62;</a>
               <a href="#">
                 {i18n.language === "ru"
-                  ? doctorsP?.user_categories[0].category.title.ru
-                  : doctorsP?.user_categories[0].category.title.ro}
+                  ? doctorsP?.user_categories?.[0]?.category.title.ru
+                  : doctorsP?.user_categories?.[0]?.category.title.ro}
                 &#62;
               </a>
               <a href="#">{t("physicianProfile")} &#62;</a>
@@ -78,22 +77,22 @@ export default function DoctorsProfile() {
                 </h3>
                 <p>
                   {i18n.language === "ru"
-                    ? doctorsP?.user_categories[0].category.description.ru
-                    : doctorsP?.user_categories[0].category.description.ro}
+                    ? doctorsP?.user_categories?.[0]?.category.description.ru
+                    : doctorsP?.user_categories?.[0]?.category.description.ro}
                 </p>
                 <p>
                   {new Date().getFullYear() -
-                    doctorsP?.doctor_details.excperience_start_year}
+                    doctorsP?.doctor_details?.excperience_start_year}
                   {t("experience")}
                 </p>
               </div>
               <div className="profil__bl-header-price">
                 <p>
-                  {doctorsP?.doctor_details.price}
+                  {doctorsP?.doctor_details?.price}
                   <img src={priceImg} alt="RUB" /> {t("priceText")}
                 </p>
                 <p>
-                  {doctorsP?.doctor_details.consultation_duration}
+                  {doctorsP?.doctor_details?.consultation_duration}
                   {t("timeText")}
                 </p>
               </div>
@@ -111,7 +110,7 @@ export default function DoctorsProfile() {
           <div className="doctor__profil-block-desc-bl">
             <img src={educationImg} alt="" />
             <h3>{t("education")}</h3>
-            <p>{stripHtmlTags(doctorsP?.doctor_details.education)}</p>
+            <p>{stripHtmlTags(doctorsP?.doctor_details?.education)}</p>
           </div>
           <div className="doctor__profil-block-desc-bl">
             <img src={specializesImg} alt="" />
@@ -119,16 +118,16 @@ export default function DoctorsProfile() {
             <p>
               {i18n.language === "ru"
                 ? stripHtmlTags(
-                    doctorsP?.user_categories[0].category.full_description.ru
+                    doctorsP?.user_categories?.[0].category?.full_description.ru
                   )
-                : doctorsP?.user_categories[0].category.full_description.ro}
+                : doctorsP?.user_categories?.[0].category?.full_description.ro}
             </p>
           </div>
           <div className="doctor__profil-block-desc-bl">
             <img src={additionallyImg} alt="" />
             <h3>{t("additionally")}</h3>
             <p>{doctorsP?.city}</p>
-            <p>code:{doctorsP?.country_code.code}</p>
+            <p>code:{doctorsP?.country_code?.code}</p>
           </div>
         </div>
       </div>

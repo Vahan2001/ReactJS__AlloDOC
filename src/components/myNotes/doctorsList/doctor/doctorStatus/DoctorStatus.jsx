@@ -2,7 +2,6 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function DoctorStatus(props) {
-  console.log(props);
   const { t } = useTranslation();
   const status = useMemo(() => {
     if (props.status === 786) {
