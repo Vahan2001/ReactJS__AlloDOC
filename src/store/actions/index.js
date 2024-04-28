@@ -1,3 +1,4 @@
-import * as UserAction from "./userActions";
+import * as DoctorsListActions from "./doctorsListActions";
+import * as DoctorProfileActions from "./doctorProfileActions";
 
-export { UserAction };
+export { DoctorsListActions, DoctorProfileActions };

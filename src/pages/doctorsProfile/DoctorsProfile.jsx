@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import priceImg from "../../images/price.png";
 import kalendarImg from "../../images/kalendar.png";
@@ -7,36 +7,25 @@ import specializesImg from "../../images/specializes.png";
 import additionallyImg from "../../images/additionally.png";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { UserSelector } from "../../store/selectors";
+import { DoctorProfileSelectors } from "../../store/selectors";
 import i18n from "../../services/i18n";
-import { requestDoctorsProfile } from "../../store/actions/userActions";
+import { DoctorProfileActions } from "../../store/actions";
 
 function stripHtmlTags(html) {
   return html?.replace(/<[^>]*>?/gm, "");
 }
 export default function DoctorsProfile() {
-  // debugger;
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const { t } = useTranslation();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const doctorsP = useSelector(UserSelector.doctorsProfilSelector);
-  console.log(doctorsP);
-  console.log(id);
-  useEffect(() => {
-    if (doctorsP) {
-      setLoading(true);
-      dispatch(requestDoctorsProfile(id));
-      setLoading(false);
-    } else if (doctorsP.length === 0) {
-      setError(true);
-    }
-  }, [dispatch, error]);
-
+  const { data, loading, error } = useSelector(
+    DoctorProfileSelectors.doctorProfile
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+
+    dispatch(DoctorProfileActions.get(id));
+  }, [dispatch]);
 
   if (error) {
     return <Navigate to="/404" />;
@@ -61,38 +50,38 @@ export default function DoctorsProfile() {
               <a href="#">{t("doctorsText")} &#62;</a>
               <a href="#">
                 {i18n.language === "ru"
-                  ? doctorsP?.user_categories?.[0]?.category.title.ru
-                  : doctorsP?.user_categories?.[0]?.category.title.ro}
+                  ? data?.user_categories?.[0]?.category.title.ru
+                  : data?.user_categories?.[0]?.category.title.ro}
                 &#62;
               </a>
               <a href="#">{t("physicianProfile")} &#62;</a>
             </div>
             <div className="doctor__profil-block-header">
               <div className="profil__bl-header-img">
-                <img src={doctorsP?.profile_image} alt="Doctors img" />
+                <img src={data?.profile_image} alt="Doctors img" />
               </div>
               <div className="profil__bl-header-name">
                 <h3>
-                  {doctorsP?.first_name} {doctorsP?.last_name}
+                  {data?.first_name} {data?.last_name}
                 </h3>
                 <p>
                   {i18n.language === "ru"
-                    ? doctorsP?.user_categories?.[0]?.category.description.ru
-                    : doctorsP?.user_categories?.[0]?.category.description.ro}
+                    ? data?.user_categories?.[0]?.category.description.ru
+                    : data?.user_categories?.[0]?.category.description.ro}
                 </p>
                 <p>
                   {new Date().getFullYear() -
-                    doctorsP?.doctor_details?.excperience_start_year}
+                    data?.doctor_details?.excperience_start_year}
                   {t("experience")}
                 </p>
               </div>
               <div className="profil__bl-header-price">
                 <p>
-                  {doctorsP?.doctor_details?.price}
+                  {data?.doctor_details?.price}
                   <img src={priceImg} alt="RUB" /> {t("priceText")}
                 </p>
                 <p>
-                  {doctorsP?.doctor_details?.consultation_duration}
+                  {data?.doctor_details?.consultation_duration}
                   {t("timeText")}
                 </p>
               </div>
@@ -105,12 +94,12 @@ export default function DoctorsProfile() {
           <div className="doctor__profil-block-desc-bl">
             <img src={kalendarImg} alt="" />
             <h3>{t("nextEntry")}</h3>
-            <p>{doctorsP?.near_date}</p>
+            <p>{data?.near_date}</p>
           </div>
           <div className="doctor__profil-block-desc-bl">
             <img src={educationImg} alt="" />
             <h3>{t("education")}</h3>
-            <p>{stripHtmlTags(doctorsP?.doctor_details?.education)}</p>
+            <p>{stripHtmlTags(data?.doctor_details?.education)}</p>
           </div>
           <div className="doctor__profil-block-desc-bl">
             <img src={specializesImg} alt="" />
@@ -118,16 +107,16 @@ export default function DoctorsProfile() {
             <p>
               {i18n.language === "ru"
                 ? stripHtmlTags(
-                    doctorsP?.user_categories?.[0].category?.full_description.ru
+                    data?.user_categories?.[0].category?.full_description.ru
                   )
-                : doctorsP?.user_categories?.[0].category?.full_description.ro}
+                : data?.user_categories?.[0].category?.full_description.ro}
             </p>
           </div>
           <div className="doctor__profil-block-desc-bl">
             <img src={additionallyImg} alt="" />
             <h3>{t("additionally")}</h3>
-            <p>{doctorsP?.city}</p>
-            <p>code:{doctorsP?.country_code?.code}</p>
+            <p>{data?.city}</p>
+            <p>code:{data?.country_code?.code}</p>
           </div>
         </div>
       </div>

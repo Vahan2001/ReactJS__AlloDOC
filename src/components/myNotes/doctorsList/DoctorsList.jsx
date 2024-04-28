@@ -5,11 +5,17 @@ import Doctor from "./doctor/Doctor";
 import { useMemo } from "react";
 import DoctorStatus from "./doctor/doctorStatus/DoctorStatus";
 import { useTranslation } from "react-i18next";
-export default function DoctorsList(props) {
+import { useSelector } from "react-redux";
+import { DoctorsListSelectors } from "../../../store/selectors";
+
+export default function DoctorsList() {
   const { t } = useTranslation();
+  const { list, loading, error } = useSelector(
+    DoctorsListSelectors.doctorsList
+  );
 
   const renderItems = useMemo(() => {
-    return props.doctors.map((item, index) => {
+    return list.map((item, index) => {
       return (
         <div className="doctors" key={index}>
           <div className="doctors__time">
@@ -33,7 +39,16 @@ export default function DoctorsList(props) {
         </div>
       );
     });
-  }, [props]);
-
-  return renderItems;
+  }, [list]);
+  if (loading) {
+    return (
+      <div className="container">
+        <div className="loading">
+          <p>Loading...</p>
+        </div>
+      </div>
+    );
+  } else {
+    return renderItems;
+  }
 }

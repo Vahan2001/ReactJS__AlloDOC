@@ -1,11 +1,9 @@
-import { takeEvery } from "redux-saga/effects";
-import { UserTypes } from "../types";
-import doctorsSaga from "./doctorsSaga";
-import doctorProfilSaga from "./doctorsProfilSaga";
+import doctorsListSaga from "./doctorsListSaga";
+import doctorProfileSaga from "./doctorProfileSaga";
+import { all } from "redux-saga/effects";
 
 function* rootSaga() {
-  yield takeEvery(UserTypes.DOCTORSREQUEST, doctorsSaga);
-  yield takeEvery(UserTypes.DOCTORSPROFILEREQUEST, doctorProfilSaga);
+  yield all([doctorProfileSaga(), doctorsListSaga()]);
 }
 
 export default rootSaga;
