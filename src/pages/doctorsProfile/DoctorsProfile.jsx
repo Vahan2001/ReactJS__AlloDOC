@@ -1,7 +1,8 @@
+import doctorProfileStyles from "./doctorProfile.module.css";
 import { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import priceImg from "../../images/price.png";
-import kalendarImg from "../../images/kalendar.png";
+import calendarImg from "../../images/kalendar.png";
 import educationImg from "../../images/education.png";
 import specializesImg from "../../images/specializes.png";
 import additionallyImg from "../../images/additionally.png";
@@ -34,7 +35,7 @@ export default function DoctorsProfile() {
   if (loading) {
     return (
       <div className="container">
-        <div className="loading">
+        <div className={doctorProfileStyles.loading}>
           <p>Loading...</p>
         </div>
       </div>
@@ -42,11 +43,11 @@ export default function DoctorsProfile() {
   }
 
   return (
-    <div className="doctors__profile">
-      <div className="doctor__profile-header-bc">
+    <div className={doctorProfileStyles.doctor__profile}>
+      <div className={doctorProfileStyles.doctor__profile__header__bc}>
         <div className="container">
-          <div className="doctors__profile-block">
-            <div className="doctor__profil-block-menu">
+          <div className={doctorProfileStyles.doctor__profile__block}>
+            <div className={doctorProfileStyles.doctor__profil__block__menu}>
               <a href="#">{t("doctorsText")} &#62;</a>
               <a href="#">
                 {i18n.language === "ru"
@@ -56,11 +57,11 @@ export default function DoctorsProfile() {
               </a>
               <a href="#">{t("physicianProfile")} &#62;</a>
             </div>
-            <div className="doctor__profil-block-header">
-              <div className="profil__bl-header-img">
+            <div className={doctorProfileStyles.doctor__profil__block__header}>
+              <div className={doctorProfileStyles.profil__bl__header__img}>
                 <img src={data?.profile_image} alt="Doctors img" />
               </div>
-              <div className="profil__bl-header-name">
+              <div className={doctorProfileStyles.profil__bl__header__name}>
                 <h3>
                   {data?.first_name} {data?.last_name}
                 </h3>
@@ -75,7 +76,7 @@ export default function DoctorsProfile() {
                   {t("experience")}
                 </p>
               </div>
-              <div className="profil__bl-header-price">
+              <div className={doctorProfileStyles.profil__bl__header__price}>
                 <p>
                   {data?.doctor_details?.price}
                   <img src={priceImg} alt="RUB" /> {t("priceText")}
@@ -89,30 +90,32 @@ export default function DoctorsProfile() {
           </div>
         </div>
       </div>
-      <div className="doctor__profil-block-desc">
+      <div className={doctorProfileStyles.doctor__profil__block__desc}>
         <div className="container">
-          <div className="doctor__profil-block-desc-bl">
-            <img src={kalendarImg} alt="" />
+          <div className={doctorProfileStyles.doctor__profil__block__desc__bl}>
+            <img src={calendarImg} alt="calendar" />
             <h3>{t("nextEntry")}</h3>
             <p>{data?.near_date}</p>
           </div>
-          <div className="doctor__profil-block-desc-bl">
-            <img src={educationImg} alt="" />
+          <div className={doctorProfileStyles.doctor__profil__block__desc__bl}>
+            <img src={educationImg} alt="education" />
             <h3>{t("education")}</h3>
             <p>{stripHtmlTags(data?.doctor_details?.education)}</p>
           </div>
-          <div className="doctor__profil-block-desc-bl">
-            <img src={specializesImg} alt="" />
+          <div className={doctorProfileStyles.doctor__profil__block__desc__bl}>
+            <img src={specializesImg} alt="specializes" />
             <h3>{t("specializes")}</h3>
             <p>
               {i18n.language === "ru"
                 ? stripHtmlTags(
                     data?.user_categories?.[0].category?.full_description.ru
                   )
-                : data?.user_categories?.[0].category?.full_description.ro}
+                : stripHtmlTags(
+                    data?.user_categories?.[0].category?.full_description.ro
+                  )}
             </p>
           </div>
-          <div className="doctor__profil-block-desc-bl">
+          <div className={doctorProfileStyles.doctor__profil__block__desc__bl}>
             <img src={additionallyImg} alt="" />
             <h3>{t("additionally")}</h3>
             <p>{data?.city}</p>

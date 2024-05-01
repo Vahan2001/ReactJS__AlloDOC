@@ -1,3 +1,4 @@
+import jsonPlaceholderStyles from "./jsonPlaceholder.module.css";
 import { useCallback, useMemo, useState } from "react";
 import { useEffect } from "react";
 import publicAPI from "../../services/api/PublicAPI";
@@ -34,8 +35,11 @@ export default function JsonPlaceholder() {
     if (status === 0) {
       return albums.map((album) => {
         return (
-          <div className="album__wrapper" key={"album_" + album.id}>
-            <div className="album">
+          <div
+            className={jsonPlaceholderStyles.album__wrapper}
+            key={"album_" + album.id}
+          >
+            <div className={jsonPlaceholderStyles.album}>
               <p onClick={handleClick(album.id)}>{album.title}</p>
             </div>
           </div>
@@ -44,13 +48,16 @@ export default function JsonPlaceholder() {
     } else {
       return (
         <>
-          <div className="photo__btn-back">
+          <div className={jsonPlaceholderStyles.photo__btn__back}>
             <button onClick={() => setStatus(0)}>&larr;</button>
           </div>
           {photos.map((photo) => {
             return (
-              <div className="photo__wrapper" key={"photo__wrapper" + photo.id}>
-                <div className="photo">
+              <div
+                className={jsonPlaceholderStyles.photo__wrapper}
+                key={"photo__wrapper" + photo.id}
+              >
+                <div className={jsonPlaceholderStyles.photo}>
                   <p>{photo.title}</p>
                   <img src={photo.thumbnailUrl} alt="photo" />
                 </div>
@@ -64,9 +71,9 @@ export default function JsonPlaceholder() {
   return (
     <div>
       <div className="container">
-        <div className="json__placeholder">
+        <div className={jsonPlaceholderStyles.json__placeholder}>
           {loading ? (
-            <div className="loading">
+            <div className={jsonPlaceholderStyles.loading}>
               <p>Loading...</p>
             </div>
           ) : (

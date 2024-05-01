@@ -1,3 +1,4 @@
+import headerStyles from "./header.module.css";
 import headerImg from "../../images/header.jpg";
 import { useTranslation } from "react-i18next";
 
@@ -5,9 +6,9 @@ export default function Header() {
   const { t } = useTranslation();
   return (
     <header>
-      <div className="header__container">
-        <div className="header__block">
-          <div className="header__title">
+      <div className={headerStyles.header__container}>
+        <div className={headerStyles.header__block}>
+          <div className={headerStyles.header__title}>
             <h1>
               <b>{t("headerTitle1")}</b> {t("headerTitle2")}
             </h1>
@@ -19,12 +20,12 @@ export default function Header() {
               <a href="#"> {t("headerSubTitle6")}</a> {t("headerSubTitle7")}
               <a href="#"> {t("headerSubTitle8")}</a>
             </p>
-            <div className="header__title-btn">
+            <div className={headerStyles.header__title__btn}>
               <a href="#">{t("headerBtn1")}</a>
               <a href="#">{t("headerBtn2")}</a>
             </div>
           </div>
-          <div className="header__image">
+          <div className={headerStyles.header__image}>
             <img src={headerImg} alt="HeaderImage" />
           </div>
         </div>

@@ -1,3 +1,4 @@
+import menuStyles from "./menu.module.css";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -6,7 +7,7 @@ export default function MenuItems() {
   const { t } = useTranslation();
 
   return (
-    <div className="menu__item">
+    <div className={menuStyles.menu__item}>
       <ul>
         <li>
           <Link to={t("menuItems.link1")}>{t("menuItems.menuItem1")}</Link>

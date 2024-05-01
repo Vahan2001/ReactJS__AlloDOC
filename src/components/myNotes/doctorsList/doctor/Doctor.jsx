@@ -1,15 +1,16 @@
+import myNotesStyles from "../../myNotes.module.css";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import i18n from "../../../../services/i18n";
 export default function Doctor(props) {
   const { t } = useTranslation();
   return (
-    <div className="doctors__item">
-      <div className="doctor__desc">
-        <div className="doctor__img">
+    <div className={myNotesStyles.doctor__item}>
+      <div className={myNotesStyles.doctor__desc}>
+        <div className={myNotesStyles.doctor__img}>
           <img src={props.item.profile_image} alt="" />
         </div>
-        <div className="doctor__name">
+        <div className={myNotesStyles.doctor__name}>
           <h3>
             {props.item.first_name} {props.item.last_name}
           </h3>
@@ -23,10 +24,10 @@ export default function Doctor(props) {
             {t("experience")}
           </b>
         </div>
-        <div className="doctor__btn">
+        <div className={myNotesStyles.doctor__btn}>
           <Link
             to={`/mynotes/doctorsprofile/${props.item.id}`}
-            className="link__btn"
+            className={myNotesStyles.link__btn}
           >
             {t("docBtn1")}
           </Link>

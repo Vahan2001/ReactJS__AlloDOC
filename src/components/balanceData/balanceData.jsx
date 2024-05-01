@@ -1,3 +1,4 @@
+import balnceDataStyles from "./balanceData.module.css";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 export default function BalanceData(props) {
@@ -17,17 +18,17 @@ export default function BalanceData(props) {
   const renderBalanceData = useMemo(() => {
     return filterBalanceData.map((item, index) => {
       return (
-        <div className="balance__data" key={index}>
-          <div className="balance__data-img">
+        <div className={balnceDataStyles.balance__data} key={index}>
+          <div className={balnceDataStyles.balance__data__img}>
             <img src={require(`../../images/${item.img}`)} alt="cart" />
           </div>
-          <div className="balance__data-time">
+          <div className={balnceDataStyles.balance__data__time}>
             <p>{item.time}</p>
           </div>
-          <div className="balance__data-title">
+          <div className={balnceDataStyles.balance__data__title}>
             <p>{item.title}</p>
           </div>
-          <div className="balance__data-price">
+          <div className={balnceDataStyles.balance__data__price}>
             <p
               style={
                 item.title === "Пополнение" || item.title === "Replenishment"

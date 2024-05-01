@@ -1,3 +1,4 @@
+import footerStyles from "./footer.module.css";
 import { useTranslation } from "react-i18next";
 import footerLogo from "../../images/footerLogo.png";
 import instImg from "../../images/instagram.png";
@@ -15,12 +16,12 @@ export default function Footer() {
   return (
     <footer>
       <div className="container">
-        <div className="footer__blocks">
-          <div className="footer__logo-block">
-            <div className="footer__logo">
-              <img src={footerLogo} alt="" />
+        <div className={footerStyles.footer__blocks}>
+          <div className={footerStyles.footer__logo__block}>
+            <div className={footerStyles.footer__logo}>
+              <img src={footerLogo} alt="AlloDoc" />
             </div>
-            <div className="footer__desc">
+            <div className={footerStyles.footer__desc}>
               <p>
                 {t("footerDesc1")}
                 <br />
@@ -28,7 +29,7 @@ export default function Footer() {
                 {t("footerDesc2")}
               </p>
             </div>
-            <div className="footer__items">
+            <div className={footerStyles.footer__items}>
               <a href="#">
                 <img src={instImg} alt="Instagram" />
               </a>
@@ -39,7 +40,7 @@ export default function Footer() {
                 <img src={youtubeImg} alt="Youtube" />
               </a>
             </div>
-            <div className="footer__store">
+            <div className={footerStyles.footer__store}>
               <a href="#">
                 <img src={appStore} alt="AppStore" />
               </a>
@@ -48,7 +49,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div className="footer__list">
+          <div className={footerStyles.footer__list}>
             <ul>
               <li>
                 <a href="#">{t("footerList1")}</a>
@@ -70,21 +71,21 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="footer__feedback">
-            <div className="feedback__block">
-              <img src={emailImg} alt="" />
+          <div className={footerStyles.footer__feedback}>
+            <div className={footerStyles.feedback__block}>
+              <img src={emailImg} alt="email" />
               <a href="#">{t("footerfeedback1")}</a>
             </div>
-            <div className="feedback__block">
-              <img src={placeImg} alt="" />
+            <div className={footerStyles.feedback__block}>
+              <img src={placeImg} alt="place" />
               <a href="#">{t("footerfeedback2")}</a>
             </div>
-            <div className="feedback__block">
-              <img src={clockFooterImg} alt="" />
+            <div className={footerStyles.feedback__block}>
+              <img src={clockFooterImg} alt="clock" />
               <a href="#">{t("footerfeedback3")}</a>
             </div>
-            <div className="feedback__block">
-              <img src={phoneImg} alt="" />
+            <div className={footerStyles.feedback__block}>
+              <img src={phoneImg} alt="phone" />
               <a href="#">{t("footerfeedback4")}</a>
             </div>
           </div>

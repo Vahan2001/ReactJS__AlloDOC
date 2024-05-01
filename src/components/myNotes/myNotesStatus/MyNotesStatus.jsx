@@ -1,3 +1,4 @@
+import myNotesStyles from "../myNotes.module.css";
 import { useCallback, useEffect, useState } from "react";
 import DoctorsList from "../doctorsList/DoctorsList";
 import { useTranslation } from "react-i18next";
@@ -23,15 +24,24 @@ export default function MyNotesStatus() {
   );
 
   return (
-    <div className="my__notes-status">
-      <div className="my__status-btns">
-        <button onClick={clickHandler(1)} className={id === 1 ? "active" : ""}>
+    <div className={myNotesStyles.my__notes__status}>
+      <div className={myNotesStyles.my__status__btns}>
+        <button
+          onClick={clickHandler(1)}
+          className={id === 1 ? myNotesStyles.active : ""}
+        >
           {t("therapist")}
         </button>
-        <button onClick={clickHandler(2)} className={id === 2 ? "active" : ""}>
+        <button
+          onClick={clickHandler(2)}
+          className={id === 2 ? myNotesStyles.active : ""}
+        >
           {t("pediatrician")}
         </button>
-        <button onClick={clickHandler(4)} className={id === 4 ? "active" : ""}>
+        <button
+          onClick={clickHandler(4)}
+          className={id === 4 ? myNotesStyles.active : ""}
+        >
           {t("obstetrician-gynecologist")}
         </button>
       </div>

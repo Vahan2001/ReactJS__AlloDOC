@@ -1,3 +1,4 @@
+import menuStyles from "./menu.module.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export default function MenuProfilItems() {
@@ -6,7 +7,7 @@ export default function MenuProfilItems() {
   const renderItems = t("menuProfilItems", { returnObjects: true }).map(
     (item, index) => (
       <li key={index}>
-        <div className="profil__item">
+        <div className={menuStyles.profil__item}>
           <img
             src={require(`../../images/${item.img}`)}
             alt="menuProfilImage"
@@ -18,7 +19,7 @@ export default function MenuProfilItems() {
   );
 
   return (
-    <div className="menu__user-profile">
+    <div className={menuStyles.menu__user__profile}>
       <ul>{renderItems}</ul>
     </div>
   );

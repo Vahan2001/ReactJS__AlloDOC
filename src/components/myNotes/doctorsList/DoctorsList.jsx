@@ -1,3 +1,4 @@
+import myNotesStyles from "../myNotes.module.css";
 import calendarImg from "../../../images/calendar.png";
 import clockImg from "../../../images/clock.png";
 import connectionImg from "../../../images/conversation.png";
@@ -17,21 +18,21 @@ export default function DoctorsList() {
   const renderItems = useMemo(() => {
     return list.map((item, index) => {
       return (
-        <div className="doctors" key={index}>
-          <div className="doctors__time">
-            <div className="doctors__time-flex">
+        <div className={myNotesStyles.doctors} key={index}>
+          <div className={myNotesStyles.doctors__time}>
+            <div className={myNotesStyles.doctors__time__flex}>
               <img src={calendarImg} alt="calendar_img" />
               <p>{item.date_of_birth} </p>
             </div>
-            <div className="doctors__time-flex">
+            <div className={myNotesStyles.doctors__time__flex}>
               <img src={clockImg} alt="clock_img" />
               <p>{t("hour")}</p>
             </div>
-            <div className="doctors__time-flex">
+            <div className={myNotesStyles.doctors__time__flex}>
               <img src={connectionImg} alt="connection_img" />
               <p>{t("connection")}</p>
             </div>
-            <div className="doctors__time-status">
+            <div className={myNotesStyles.doctors__time__status}>
               <DoctorStatus status={item.id} />
             </div>
           </div>
@@ -43,7 +44,7 @@ export default function DoctorsList() {
   if (loading) {
     return (
       <div className="container">
-        <div className="loading">
+        <div className={myNotesStyles.loading}>
           <p>Loading...</p>
         </div>
       </div>

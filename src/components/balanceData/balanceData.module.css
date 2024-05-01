@@ -1,0 +1,49 @@
+.balance__data {
+  display: flex;
+  border-radius: 10px;
+  background: rgb(246, 248, 251);
+  margin-bottom: 10px;
+  justify-content: space-evenly;
+}
+.balance__data__img {
+  width: 20%;
+}
+.balance__data__time {
+  width: 20%;
+  & p {
+    padding: 15px 0;
+    color: rgb(79, 79, 79);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    text-align: left;
+  }
+}
+.balance__data__title {
+  width: 20%;
+  & p {
+    padding: 15px 0;
+    color: rgb(160, 160, 160);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    text-align: left;
+  }
+}
+.balance__data__price {
+  width: 20%;
+  & p {
+    padding: 15px 0;
+    color: rgb(33, 150, 83);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.3px;
+    text-align: left;
+  }
+}

@@ -1,3 +1,4 @@
+import menuStyles from "./menu.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -12,37 +13,37 @@ export default function Menu() {
   const { t } = useTranslation();
   const [profilBlok, setprofilBlok] = useState(false);
   return (
-    <div className="menu__wrapper">
-      <div className="menu">
+    <div className={menuStyles.menu__wrapper}>
+      <div className={menuStyles.menu}>
         <div className="container">
-          <div className="translate__page">
+          <div className={menuStyles.translate__page}>
             <p
               onClick={() => i18n.changeLanguage("ru")}
-              className={i18n.language === "ru" ? "langActive" : ""}
+              className={i18n.language === "ru" ? menuStyles.langActive : ""}
             >
               ru
             </p>
             <p
               onClick={() => i18n.changeLanguage("en")}
-              className={i18n.language === "en" ? "langActive" : ""}
+              className={i18n.language === "en" ? menuStyles.langActive : ""}
             >
               en
             </p>
           </div>
-          <div className="menu__block">
-            <div className="menu__logo">
+          <div className={menuStyles.menu__block}>
+            <div className={menuStyles.menu__logo}>
               <Link to={"/"}>
                 <img src={logoImg} alt="AlloDoc_Logo" />
               </Link>
             </div>
             <MenuItems />
-            <div className="menu__user-icon">
+            <div className={menuStyles.menu__user__icon}>
               <img src={notificationsImg} alt="notifications" />
             </div>
-            <div className="menu__user">
+            <div className={menuStyles.menu__user}>
               <p>A</p>
               <span>{t("menuProfilName")}</span>
-              <div className="menu__user-img">
+              <div className={menuStyles.menu__user__img}>
                 <button
                   onClick={() =>
                     setprofilBlok((setprofilBlok) => !setprofilBlok)
